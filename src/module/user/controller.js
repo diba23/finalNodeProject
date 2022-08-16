@@ -14,11 +14,11 @@ class UserController {
         const passwordEqual = await bcrypt.compare(password, dbPass);
         if(passwordEqual) {
           const payload = {
-            id: users.id,
-            email: users.email,
-            userName: users.user_name,
-            firstName: users.first_name,
-            lastName: users.last_name,
+            id: users[0].id,
+            email: users[0].email,
+            userName: users[0].user_name,
+            firstName: users[0].first_name,
+            lastName: users[0].last_name,
           }
           const token = AuthenticatinManager.getJwtToken(payload) 
           res.json(token);

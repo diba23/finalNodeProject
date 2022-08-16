@@ -17,7 +17,7 @@ class AuthMiddleware {
         res.status(403).json({ msg: "Not authorizationed!" });
       }
     } catch (err) {
-      res.status(401).end({ msg: "No username and/or password!" });
+      console.log(err);
     }
   }
 }
