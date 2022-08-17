@@ -60,6 +60,15 @@ class PollsList {
       console.error(err);
     }
   }
+  static async getPollsLink(req, res, next) {
+    try {
+      const pollId = req.params.id;
+      const result = await PollReader.getLink(pollId)
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
 module.exports = PollsList;

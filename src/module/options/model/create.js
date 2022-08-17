@@ -1,9 +1,9 @@
 const DatabaseManager = require("../../../core/database/databaseManager");
 
 class OptionCreate {
-  static async createPoll(pollId, userId, link) {
-    const query = `insert into options (${pollId} User_id, link) values (${pollId} ${userId}, '${link}')`;
-    // await DatabaseManager.query(query);
+  static async createOption(title, insertId) {
+    const query = `insert into options (option_name, polls_list_id) values ('${title}', ${insertId})`;
+    await DatabaseManager.query(query);
   }
 }
 
