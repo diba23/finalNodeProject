@@ -6,6 +6,7 @@ var cors = require('cors');
 const DatabaseManager = require('./src/core/database/databaseManager');
 const usersRouter = require('./src/module/user/router/users');
 const pollRouter = require('./src/module/pollsList/router');
+const optionsRouter = require("./src/module/options/router");
 
 var app = express();
 (async()=>{
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use('/api/login', usersRouter);
 app.use('/api/poll_list', pollRouter);
+app.use('/api/create', optionsRouter);
 
 app.use(function(req, res, next){
   next(createError(404));

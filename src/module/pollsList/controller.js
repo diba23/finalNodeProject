@@ -1,6 +1,9 @@
 const PollReader = require("./model/read");
 const PollUpdate = require("./model/update");
-const OptionsReader = require("../options/model/reab")
+const PollDelete = require("./model/delete");
+const OptionsReader = require("../options/model/reab");
+const ParticipantsReader = require("../participants/model/reab");
+const OptionDelete = require("../options/model/delete");
 
 async function findOneByPollId(paramId, userId) {
   const OnePolls = await PollReader.getOnePoll(userId.id, paramId);
@@ -18,7 +21,7 @@ class PollsList {
     const pollsOptions = await Promise.all(
       allPolls.map(async (item) => {
         const allOptions = await OptionsReader.getAllOptionsByPollsListId(item.id);
-        const participantCount = await PollReader.participantsCount(item.id);
+        const participantCount = await ParticipantsReader.participantsCount(item.id);
         return { ...item, options: allOptions, participant_count: participantCount[0]['count(*)'] };
       })
     );
@@ -39,7 +42,7 @@ class PollsList {
       const updatedData = req.body;
       if (updatedData && updatedData.id){
         PollUpdate.updateData(updatedData);
-        res.json("hi");
+        res.status(200).json({ms: 'data updated'});
       } else {
         res.status(401).json("data is not valid");
       }
@@ -47,13 +50,16 @@ class PollsList {
       console.error(err);
     }
   }
+  static async deleteOnePoll(req, res, next) {
+    try {
+      const deleteId = req.params.id;
+      PollDelete.deleteData(deleteId);
+      OptionDelete.deleteAllOptions(deleteId);
+      res.status(200).json({ms: 'data delete'});
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
 module.exports = PollsList;
-
-
-      // for (const [key, value] of Object.entries(updatedData)) {
-      //   if(value) {
-      //     pollsOptions[0][key] = value;
-      //   }
-      // }
