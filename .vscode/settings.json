@@ -1,0 +1,13 @@
+{
+  "deploy": {
+    "targets": [{
+      "type": "sftp",
+      "name": "project",
+      "host": "185.110.190.126",
+      "port": 22,
+      "dir": "/home/build",
+      "user": "root",
+      "password": "6LuuyH33p8q9pW"
+    }]
+  }
+}
