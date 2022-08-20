@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "build": "snowpack build"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -15,5 +16,9 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.7.0",
+    "snowpack": "^3.8.8"
   }
 }
