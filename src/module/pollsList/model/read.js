@@ -16,6 +16,11 @@ class PollReader {
     const result = await DatabaseManager.query(query);
     return result[0];
   }
+  static async getOnePollByLink(Link) {
+    const query = `select * from polls_list where link = '${Link}';`;
+    const result = await DatabaseManager.query(query);
+    return result[0];
+  }
 }
 
 module.exports = PollReader;

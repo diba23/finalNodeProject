@@ -2,7 +2,7 @@ const PollReader = require("./model/read");
 const PollUpdate = require("./model/update");
 const PollDelete = require("./model/delete");
 const OptionsReader = require("../options/model/reab");
-const ParticipantsReader = require("../participants/model/reab");
+const ParticipantsReader = require("../participants/model/read");
 const OptionDelete = require("../options/model/delete");
 
 async function findOneByPollId(paramId, userId) {
