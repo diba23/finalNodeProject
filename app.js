@@ -8,6 +8,7 @@ const usersRouter = require('./src/module/user/router/users');
 const pollRouter = require('./src/module/pollsList/router');
 const optionsRouter = require("./src/module/options/router");
 const participantRouter = require("./src/module/participants/router");
+const participantsChoseRouter = require("./src/module/participantsChose/router");
 
 var app = express();
 (async()=>{
@@ -24,6 +25,7 @@ app.use('/api/login', usersRouter);
 app.use('/api/poll_list', pollRouter);
 app.use('/api/create', optionsRouter);
 app.use('/api/poll_chose', participantRouter);
+app.use('/api/participantsChose', participantsChoseRouter);
 
 
 app.use(function(req, res, next){
